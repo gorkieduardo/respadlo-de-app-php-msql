@@ -1,15 +1,16 @@
 <?php
 $usuarios = ControladorFormularios::ctrSeleccionarRegistros();
-echo '<pre>';
+/* echo '<pre>';
 print_r($usuarios);
 echo '</pre>';
-
+ */
 ?>
 
 
 <table class="table table-striped">
 	<thead>
 		<tr>
+			<th>#</th>
 			<th>Nombre</th>
 			<th>Email</th>
 			<th>Fecha</th>
@@ -20,17 +21,22 @@ echo '</pre>';
 
 	<tbody>
 
-		<tr>
-			<td>John Gómez</td>
-			<td>doge@gmail.com</td>
-			<td>23/10/2019</td>
-			<td>
-				<div class="btn-group">
+		<?php foreach ($usuarios as $key => $value) : ?>
 
-					<button class="btn btn-warning "><i class="fas fa-pencil-alt"></i></button>
-					<button class="btn btn-warning "><i class="fas fa-trash-alt"></i></button>
-				</div>
-			</td>
-		</tr>
+			<tr>
+				<td><?php echo ($key + 1); ?></td>
+				<td><?php echo $value["nombre"]; ?></td>
+				<td><?php echo $value["email"]; ?></td>
+				<td><?php echo $value["fecha"]; ?></td>
+				<td>
+					<div class="btn-group">
+
+						<button class="btn btn-warning "><i class="fas fa-pencil-alt"></i></button>
+						<button class="btn btn-warning "><i class="fas fa-trash-alt"></i></button>
+					</div>
+				</td>
+			</tr>
+		<?php endforeach ?>
 	</tbody>
+
 </table>
